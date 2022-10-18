@@ -49,14 +49,14 @@ class MoviesController < ApplicationController
   end
 
   def upvote
-    vote = Vote.find_or_initialize_by(movie_id: @movie.id, user_id: params[:user_id])
-    vote.like = true
-    vote.hate = false
-    vote.transaction do
-      vote.decrease_movie_hate_count unless vote.new_record?
-      vote.increase_movie_like_count
+    @vote = Vote.find_or_initialize_by(movie_id: @movie.id, user_id: params[:user_id])
+    @vote.transaction do
+      @vote.decrease_movie_hate_count if @vote.hate
+      @vote.increase_movie_like_count
+      @vote.like = true
+      @vote.hate = false
       respond_to do |format|
-        if vote.save
+        if @vote.save
           format.html { redirect_to movies_url }
         else
           format.html { render :new, status: :unprocessable_entity }
@@ -66,15 +66,14 @@ class MoviesController < ApplicationController
   end
 
   def downvote
-    vote = Vote.find_or_initialize_by(movie_id: @movie.id, user_id: params[:user_id])
-    vote.like = false
-    vote.hate = true
-
-    vote.transaction do
-      vote.decrease_movie_like_count unless vote.new_record?
-      vote.increase_movie_hate_count
+    @vote = Vote.find_or_initialize_by(movie_id: @movie.id, user_id: params[:user_id])
+    @vote.transaction do
+      @vote.decrease_movie_like_count if @vote.like
+      @vote.increase_movie_hate_count
+      @vote.like = false
+      @vote.hate = true
       respond_to do |format|
-        if vote.save
+        if @vote.save
           format.html { redirect_to movies_url }
         else
           format.html { render :new, status: :unprocessable_entity }

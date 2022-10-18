@@ -1,0 +1,55 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  like: true
+  hate: false
+  user_id: 1
+  movie_id: 1
+  created_at: Mon, 17 Oct 2022 14:00:28.209502000 UTC +00:00
+  updated_at: Mon, 17 Oct 2022 14:00:28.209502000 UTC +00:00
+
+two:
+  id: 2
+  like: true
+  hate: false
+  user_id: 1
+  movie_id: 2
+  created_at: Mon, 17 Oct 2022 14:00:28.209502000 UTC +00:00
+  updated_at: Mon, 17 Oct 2022 14:00:28.209502000 UTC +00:00
+
+three:
+  id: 3
+  like: false
+  hate: true
+  user_id: 1
+  movie_id: 3
+  created_at: Mon, 17 Oct 2022 14:00:28.209502000 UTC +00:00
+  updated_at: Mon, 17 Oct 2022 14:00:28.209502000 UTC +00:00
+
+four:
+  id: 4
+  like: true
+  hate: false
+  user_id: 2
+  movie_id: 1
+  created_at: Mon, 17 Oct 2022 14:00:28.209502000 UTC +00:00
+  updated_at: Mon, 17 Oct 2022 14:00:28.209502000 UTC +00:00
+
+five:
+  id: 5
+  like: true
+  hate: false
+  user_id: 2
+  movie_id: 2
+  created_at: Mon, 17 Oct 2022 14:00:28.209502000 UTC +00:00
+  updated_at: Mon, 17 Oct 2022 14:00:28.209502000 UTC +00:00
+
+six:
+  id: 6
+  like: false
+  hate: true
+  user_id: 2
+  movie_id: 2
+  created_at: Mon, 17 Oct 2022 14:00:28.209502000 UTC +00:00
+  updated_at: Mon, 17 Oct 2022 14:00:28.209502000 UTC +00:00

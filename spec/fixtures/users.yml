@@ -1,0 +1,18 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  first_name: "Clement"
+  last_name: "Larkin"
+  email: "hubert_crooks@kerluke-rogahn.biz"
+  created_at: "2022-10-17 13:49:53.192923000 +0000"
+  updated_at: "2022-10-17 13:49:53.192923000 +0000"
+#
+two:
+  id: 2
+  first_name: "Theron"
+  last_name: "West"
+  email: "bernardo@hintz.co"
+  created_at: "2022-10-17 13:49:53.383297000 +0000"
+  updated_at: "2022-10-17 13:49:53.383297000 +0000"
+
