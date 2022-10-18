@@ -1,37 +1,8 @@
 <p id="notice"><%= notice %></p>
+<nav class="navbar navbar-light bg-light">
+  <div> Sort By  <%= link_to "Like", movies_path(filter: 'like') %>
+    | <%= link_to "Hate", movies_path(filter: 'hate') %>
+    | <%= link_to "Date", movies_path(filter: 'date') %></div>
+</nav>
 
-<h1>Movies</h1>
-
-<% @movies.each do |movie| %>
-  <div class="card">
-    <div class="card-header">
-      <h5 class="card-title"><%= movie.title %></h5>
-    </div>
-    <div class="card-body">
-      <h6 class="card-subtitle mb-2 text-muted">Posted By:&nbsp;&nbsp
-        <u><%= movie.user_name %></u>&nbsp;&nbsp <%= movie.day_ago_created %></h6>
-      <p class="card-text"><%= movie.description %></p>
-      <div class="row">
-        <div class="col-sm-6">
-          <%= Movie.likes(movie.id) %> likes | <%= Movie.hates(movie.id) %> hates
-        </div>
-        <div class="col-sm-6">
-          <%= link_to like_movie_path(movie.id), method: :post do %>
-            <% if movie.liked?(current_user.id) %>
-              You like this movie |
-            <% else %>
-              Like |
-            <% end %>
-          <% end %>
-          <%= link_to hate_movie_path(movie.id), method: :post do %>
-            <% if movie.hated?(current_user.id) %>
-              You hate this movie
-            <% else %>
-              Hate
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-<% end %>
+<%= render 'movies/movies_list', movies: @movies %>

@@ -16,6 +16,8 @@ ActiveRecord::Schema.define(version: 2022_10_16_145522) do
     t.string "title"
     t.text "description"
     t.string "user_name"
+    t.bigint "like_count", default: 0
+    t.bigint "hate_count", default: 0
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

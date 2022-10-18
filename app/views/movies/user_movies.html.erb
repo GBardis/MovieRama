@@ -1,0 +1,7 @@
+<nav class="navbar navbar-light bg-light">
+  <div> Sort By  <%= link_to "Like", user_movies_movies_path(user_id: @movies.first.user_id, filter: 'like') %>
+    | <%= link_to "Hate", user_movies_movies_path(user_id: @movies.first.user_id, filter: 'hate') %>
+    | <%= link_to "Date", user_movies_movies_path(user_id: @movies.first.user_id, filter: 'date') %></div>
+</nav>
+
+<%= render 'movies/movies_list', movies: @movies %>

@@ -12,6 +12,21 @@
 
 <body>
 <div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <%= link_to root_path do %>
+        <h1>Movies</h1>
+      <% end %>
+    </div>
+    <div class="col-sm-6">
+      <% if user_signed_in? %>
+        Welcome back <u><%= current_user.full_name %></u>&nbsp; | <%= link_to 'Add new movie', new_movie_path %>
+        | <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to 'Login', user_session_path %> | <%= link_to 'Sign up', new_user_registration_path %>
+      <% end %>
+    </div>
+  </div>
   <%= yield %>
 </div>
 </body>

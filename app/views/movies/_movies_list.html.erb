@@ -1,0 +1,37 @@
+<% movies.each do |movie| %>
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title"><%= movie.title %></h5>
+    </div>
+    <div class="card-body">
+      <h6 class="card-subtitle mb-2 text-muted">Posted By:&nbsp;&nbsp
+        <% if current_user&.id == movie.user_id %>
+          <%= link_to "Me", user_movies_movies_path(user_id: current_user&.id) %>&nbsp;
+        <% else %>
+          <%= link_to movie.user_name, user_movies_movies_path(user_id: movie.user_id) %>&nbsp;
+        <% end %>
+        &nbsp <%= movie.day_ago_created %></h6>
+      <p class="card-text"><%= movie.description %></p>
+      <div class="row">
+        <div class="col-sm-6">
+          <%= movie.like_count %> likes | <%= movie.hate_count %> hates
+        </div>
+        <div class="col-sm-6">
+          <% unless current_user&.id == movie.user_id %>
+            <% if movie.liked?(current_user&.id) %>
+              You like this movie |
+            <% else %>
+              <%= link_to "Like", like_movie_path(movie.id, user_id: current_user&.id), method: :post %> |
+            <% end %>
+            <% if movie.hated?(current_user&.id) %>
+              | You hate this movie
+            <% else %>
+              <%= link_to "Hate", hate_movie_path(movie.id, user_id: current_user&.id), method: :post %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+<% end %>

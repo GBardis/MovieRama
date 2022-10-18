@@ -18,10 +18,14 @@ class Movie < ApplicationRecord
   end
 
   def liked?(user_id)
-    !!votes.find { |vote| vote.user_id == user_id  && vote.like }
+    return unless user_id
+
+    !!votes.find { |vote| vote.user_id == user_id && vote.like }
   end
 
   def hated?(user_id)
-    !!votes.find { |vote| vote.user_id == user_id  && vote.hate }
+    return unless user_id
+
+    !!votes.find { |vote| vote.user_id == user_id && vote.hate }
   end
 end
